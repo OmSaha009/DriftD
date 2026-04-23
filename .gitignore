@@ -1,0 +1,37 @@
+# IDE
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+venv/
+driftd-env-v/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+*.db
+*.sqlite
+*.sqlite3
+data/*.db
+!data/.gitkeep
+
+*.log
+log.txt
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+.mypy_cache/
+.ruff_cache/
+
+.pytest_cache/
+.coverage
+htmlcov/
