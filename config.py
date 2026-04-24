@@ -8,7 +8,7 @@ from pathlib import Path
 class Config:
 
     poll_interval: float = 2.0
-    path_db: Path = Path("data/usage.py")
+    path_db: Path = Path("data/usage.db")
 
     category_map: Dict[str, str] = field(default_factory=lambda: {
         # Social
