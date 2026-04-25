@@ -25,7 +25,7 @@ During online classes, I got tired of reaching for my laptop just to change volu
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Clone & Install
 
@@ -58,7 +58,7 @@ python main.py --listen
 
 ---
 
-## 🎮 Usage
+## Usage
 
 ### Three Modes
 
@@ -91,7 +91,7 @@ python main.py --listen
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 driftd/
@@ -108,7 +108,7 @@ driftd/
 
 ---
 
-## 🧠 What I Learned
+## What I Learned
 
 - **Threading** – Background tracker without blocking main thread
 - **SQLite** – Session logging, aggregations, date filtering
@@ -119,7 +119,7 @@ driftd/
 
 ---
 
-## ⚠️ Limitations
+## Limitations
 
 | Issue | Status |
 |-------|--------|
@@ -130,7 +130,7 @@ driftd/
 
 ---
 
-## 🔧 Requirements
+## Requirements
 
 ```
 python >= 3.10
@@ -144,39 +144,8 @@ numpy
 
 ---
 
-## 🗺️ Roadmap
-
-- [x] Phase 1: Window tracker + SQLite
-- [x] Phase 2: Usage reports
-- [x] Phase 3: System controls (volume, brightness, focus)
-- [x] Phase 4: Push-to-talk voice
-- [ ] Phase 5: Wake word ("Astra")
-- [ ] System tray icon (Windows)
-
----
-
-## 🙏 Credits
+## Credits
 
 - [OpenAI Whisper](https://github.com/openai/whisper) – Offline STT
 - [pywin32](https://github.com/mhammond/pywin32) – Windows API
 - [sounddevice](https://github.com/spatialaudio/python-sounddevice) – Audio recording
-
----
-
-## 📝 License
-
-MIT – Use it, break it, learn from it.
-
----
-
-## 🤔 Why "Driftd"?
-
-Because time drifts when you're not paying attention. And because "Drifted" was already taken.
-
----
-
-## 💬 Final Note
-
-This started as a "lazy during class" project. It turned into 600+ lines of working code that I actually use daily.
-
-**Small projects > perfect projects.**
