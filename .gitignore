@@ -9,7 +9,7 @@ __pycache__/
 *.pyd
 
 venv/
-driftd-env-v/
+driftd-env/
 env/
 ENV/
 env.bak/
@@ -35,3 +35,5 @@ desktop.ini
 .pytest_cache/
 .coverage
 htmlcov/
+
+models/

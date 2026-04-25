@@ -9,6 +9,7 @@ class Config:
 
     poll_interval: float = 2.0
     path_db: Path = Path("data/usage.db")
+    push_to_talk_key: str = "`"
 
     category_map: Dict[str, str] = field(default_factory=lambda: {
         # Social

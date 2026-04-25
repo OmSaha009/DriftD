@@ -21,7 +21,7 @@ class Analyzer:
             formatted_time += f"{s}s"
         return formatted_time
     
-    def __print_report(self, cur: list[tuple[str, float]], title: str) -> str:
+    def _print_report(self, cur: list[tuple[str, float]], title: str) -> str:
         if not cur:
             return f"===={title.upper()}====\n\nNo activity recorded\n"
             
@@ -36,27 +36,27 @@ class Analyzer:
         data += f"\nTOTAL: {self._format_duration(total)}\n"
         return data
 
-    def report_today(self):
+    def report_today(self) -> str:
+        """Return today's report as string."""
         today_date = datetime.now().date().isoformat()
         with sqlite3.connect(self.config.path_db) as conn:
-            cursor = conn.execute("SELECT category, SUM(duration_seconds) FROM sessions WHERE DATE(start_time) = ? GROUP BY category", (today_date,))
-            return self.__print_report(cursor.fetchall(), "Today")
-    
-    def report_yesterday(self):
-        yesterday_date = (datetime.now() - timedelta(days=1)).date().isoformat()
-        with sqlite3.connect(self.config.path_db) as conn:
-            cursor = conn.execute("SELECT category, SUM(duration_seconds) FROM sessions WHERE DATE(start_time) = ? GROUP BY category", (yesterday_date,))
-            return self.__print_report(cursor.fetchall(), "Yesterday")
-        
-    def report_week(self):
-        today_date = datetime.now().date().isoformat()
-        week_date = (datetime.now() - timedelta(days=7)).date().isoformat()
-        with sqlite3.connect(self.config.path_db) as conn:
-            cursor = conn.execute("SELECT category, SUM(duration_seconds) FROM sessions WHERE DATE(start_time) BETWEEN ? AND ? GROUP BY category", (week_date, today_date))
-            return self.__print_report(cursor.fetchall(), "This Week")
-        
-    
-config = Config()
-analyzer = Analyzer(config=config)
+            cursor = conn.execute("""
+                SELECT category, SUM(duration_seconds) 
+                FROM sessions 
+                WHERE DATE(start_time) = ? 
+                GROUP BY category
+            """, (today_date,))
+            return self._print_report(cursor.fetchall(), "Today")
 
-print(analyzer.report_week())
+    def report_week(self) -> str:
+        """Return weekly report as string."""
+        today = datetime.now().date().isoformat()
+        week_ago = (datetime.now() - timedelta(days=7)).date().isoformat()
+        with sqlite3.connect(self.config.path_db) as conn:
+            cursor = conn.execute("""
+                SELECT category, SUM(duration_seconds) 
+                FROM sessions 
+                WHERE DATE(start_time) BETWEEN ? AND ? 
+                GROUP BY category
+            """, (week_ago, today))
+            return self._print_report(cursor.fetchall(), "This Week")
